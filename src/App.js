@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import ReactAudioPlayer from 'react-audio-player';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    dracukeo: false
+  };
+
+  render() {
+    return (
+      <div className="center">
+        {
+        this.state.dracukeo ? <div><img src="/keo.jpg" alt="Kidd Keo"/><ReactAudioPlayer src="/dracukeo.mp3" autoPlay onEnded={() => {this.setState({dracukeo: false})}}/></div> :         <p onClick={() => {this.setState({dracukeo: true})}}>Dracukeo</p>
+
+        }
+        
+      </div>
+    );
+  }
 }
 
 export default App;
